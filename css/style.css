@@ -1,4 +1,5 @@
 @import "reset.css";
+@import url('https://fonts.googleapis.com/css2?family=Sunflower:wght@500&display=swap');
 
 body {
     background-color: #E8E8E8;
@@ -8,6 +9,27 @@ body {
         flex-direction: column;
         align-items: center;
         padding-top: 50px;
+}
+
+.Title_Text {
+    text-align: center;
+    font-size: 32px;
+    font-family: 'Sunflower', sans-serif;
+    font-size: 72px;
+    background-image: -webkit-linear-gradient(#D28484, #64AAFF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position:relative; 
+}
+
+.Title_Text:after {
+    background: none;
+    content: attr(data-text);
+    left: 0;
+    position: absolute;
+    text-shadow: 1px 1px 2px #000;
+    top: 0;
+    z-index: -1;
 }
 
 .canvas {
