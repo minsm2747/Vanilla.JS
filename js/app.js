@@ -1,7 +1,9 @@
 const canvas = document.getElementById("jsCanvas");
 const ctx = canvas.getContext("2d");
 const colors = document.getElementsByClassName("controls__color jsColor");
+const range = document.getElementById("jsRange");
 
+// 그림 그리기 기본 세팅
 canvas.width = 700;
 canvas.height = 700;
 
@@ -18,6 +20,7 @@ function startPainting() {
     painting = true;
 }
 
+// 선 그리기 구현
 function onMouseMove(event) {
     const x = event.offsetX;
     const y = event.offsetY;
@@ -35,6 +38,12 @@ function handleColorClick(event) {
     ctx.strokeStyle = color;
 }
 
+// 선 그리기 사이즈 조절
+function handleRangeChange(event) {
+    const size = event.target.value;
+    ctx.lineWidth = size;
+}
+
 if (canvas) {
     canvas.addEventListener("mousemove", onMouseMove);
     canvas.addEventListener("mousedown", startPainting);
@@ -42,4 +51,12 @@ if (canvas) {
     canvas.addEventListener("mouseleave", stopPainting);
 }
 
-Array.from(colors).forEach(color => color.addEventListener("click", handleColorClick));
+// 색상 변경 구현
+Array.from(colors).forEach(color => 
+    color.addEventListener("click", handleColorClick)
+);
+
+// 선 그리기 사이즈 조절
+if (range) {
+    range.addEventListener("input", handleRangeChange);
+}
